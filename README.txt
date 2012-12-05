@@ -14,7 +14,9 @@ http://www.jboss.org/as7
 In order to build
 $ cd raffle
 
-The following will generate the meta classes
+The following will generate the meta classes. You probably don't have to run this,
+but if you have missing Prize_.java and friends, this will generate the classes.
+
 $ mvn processor:process
 
 $ mvn compile package
