@@ -88,6 +88,12 @@
           <proc>none</proc>
         </configuration>
       </plugin>
+      <!-- JBoss AS plugin to deploy war -->
+      <plugin>
+            <groupId>org.jboss.as.plugins</groupId>
+            <artifactId>jboss-as-maven-plugin</artifactId>
+            <version>${version.org.jboss.as.plugins.maven.plugin}</version>
+         </plugin>
       <plugin>
         <groupId>org.bsc.maven</groupId>
         <artifactId>maven-processor-plugin</artifactId>
@@ -117,4 +123,7 @@
       </plugin>
     </plugins>
   </build>
+  <properties>
+  	<version.org.jboss.as.plugins.maven.plugin>7.3.Final</version.org.jboss.as.plugins.maven.plugin>
+  </properties>
 </project>
