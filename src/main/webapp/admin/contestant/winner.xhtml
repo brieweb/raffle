@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/resources/scaffold/pageTemplate.xhtml">
+
+
+
+	<ui:param name="pageTitle" value="View Contestant"/>
+
+	<ui:define name="header">
+		Contestant
+	</ui:define>
+
+	<ui:define name="subheader">
+		Winner</ui:define>
+
+	<ui:define name="footer"/>
+
+	<ui:define name="main">
+	<h:form id="search">
+			<div class="buttons"> 
+			<h:commandButton action="#{pickWinnerBean.winner()}" value="Pick Winner" styleClass="btn btn-primary"/>
+			
+			
+		</div>
+		
+		<h:outputLabel value="Selected Prize" />
+			<h:selectOneMenu converter="#{pickWinnerBean.prizeConverter}" id="winnerBeanExampleContestant" value="#{pickWinnerBean.prize}">
+			<f:selectItem/>
+			<f:selectItems value="#{pickWinnerBean.allPrize}"/>
+		</h:selectOneMenu>
+		
+		<h:panelGrid columnClasses="label,component,required" columns="3">
+			<h:outputLabel for="contestantBeanContestantFirstName" value="First Name:"/>
+			<h:outputText id="contestantBeanContestantFirstName" value="#{pickWinnerBean.contestant.firstName}"/>
+			<h:outputText/>
+			<h:outputLabel for="contestantBeanContestantLastName" value="Last Name:"/>
+			<h:outputText id="contestantBeanContestantLastName" value="#{pickWinnerBean.contestant.lastName}"/>
+			<h:outputText/>
+		</h:panelGrid>
+
+		<div class="buttons">
+			<h:link value="View All" outcome="search" styleClass="btn btn-primary"/> 						
+		</div>
+		
+		
+
+			
+			
+		</h:form>
+	</ui:define>
+
+</ui:composition>
