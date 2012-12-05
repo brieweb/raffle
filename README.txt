@@ -1,4 +1,4 @@
-Tue Nov 20 00:26:48 PST 2012
+Wed Dec  5, 2012
 
 This is "Raffle it Up" application for doing a raffle. It is written in
 Java and targetted for JBoss AS7. Although, it could run on other 
