@@ -60,6 +60,12 @@
       <artifactId>hibernate-entitymanager</artifactId>
       <scope>provided</scope>
     </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+     <artifactId>junit</artifactId>
+     <version>4.0</version>
+     <scope>test</scope>
+    </dependency>
   </dependencies>
   <repositories>
     <repository>
