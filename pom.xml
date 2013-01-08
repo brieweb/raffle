@@ -6,6 +6,9 @@
   <artifactId>raffle</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>war</packaging>
+  <properties>
+    <version.org.jboss.as.plugins.maven.plugin>7.3.Final</version.org.jboss.as.plugins.maven.plugin>
+  </properties>
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -21,9 +24,33 @@
         <version>4.2.0-SNAPSHOT</version>
         <scope>provided</scope>
       </dependency>
+      
+      <dependency>
+        <groupId>org.ocpsoft.rewrite</groupId>
+        <artifactId>rewrite-impl-servlet</artifactId>
+        <version>1.1.0.Final</version>
+      </dependency>
+      
+
+      
+      <dependency>
+        <groupId>org.richfaces</groupId>
+        <artifactId>richfaces-bom</artifactId>
+        <version>4.2.2.Final</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
     </dependencies>
   </dependencyManagement>
   <dependencies>
+  
+  	    <!-- Import the Servlet API, we use provided scope as the API is included in JBoss AS 7 -->
+        <dependency>
+            <groupId>org.jboss.spec.javax.servlet</groupId>
+            <artifactId>jboss-servlet-api_3.0_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        
     <dependency>
       <groupId>org.hibernate.javax.persistence</groupId>
       <artifactId>hibernate-jpa-2.0-api</artifactId>
@@ -62,9 +89,32 @@
     </dependency>
     <dependency>
       <groupId>junit</groupId>
-     <artifactId>junit</artifactId>
-     <version>4.0</version>
-     <scope>test</scope>
+      <artifactId>junit</artifactId>
+      <version>4.0</version>
+      <scope>test</scope>
+    </dependency>
+    
+            <!-- The rewrite library allows us to do url rewriting - used here for rewriting mobile devices to mobile specific views -->
+        <dependency>
+            <groupId>org.ocpsoft.rewrite</groupId>
+            <artifactId>rewrite-servlet</artifactId>
+        </dependency>
+
+        <!-- The cdi integration allows for CDI injection into the rewrite configuration class -->
+        <dependency>
+            <groupId>org.ocpsoft.rewrite</groupId>
+            <artifactId>rewrite-integration-cdi</artifactId>
+        </dependency>
+        
+    <dependency>
+      <groupId>org.richfaces.ui</groupId>
+      <artifactId>richfaces-components-ui</artifactId>
+      <version>4.2.2.Final</version>
+    </dependency>
+    <dependency>
+      <groupId>org.richfaces.core</groupId>
+      <artifactId>richfaces-core-impl</artifactId>
+      <version>4.2.2.Final</version>
     </dependency>
   </dependencies>
   <repositories>
@@ -94,12 +144,11 @@
           <proc>none</proc>
         </configuration>
       </plugin>
-      <!-- JBoss AS plugin to deploy war -->
       <plugin>
-            <groupId>org.jboss.as.plugins</groupId>
-            <artifactId>jboss-as-maven-plugin</artifactId>
-            <version>${version.org.jboss.as.plugins.maven.plugin}</version>
-         </plugin>
+        <groupId>org.jboss.as.plugins</groupId>
+        <artifactId>jboss-as-maven-plugin</artifactId>
+        <version>${version.org.jboss.as.plugins.maven.plugin}</version>
+      </plugin>
       <plugin>
         <groupId>org.bsc.maven</groupId>
         <artifactId>maven-processor-plugin</artifactId>
@@ -129,7 +178,4 @@
       </plugin>
     </plugins>
   </build>
-  <properties>
-  	<version.org.jboss.as.plugins.maven.plugin>7.3.Final</version.org.jboss.as.plugins.maven.plugin>
-  </properties>
 </project>
