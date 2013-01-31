@@ -28,6 +28,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import com.raffleitup.domain.Contestant;
+import com.raffleitup.domain.Contestant_;
 import com.raffleitup.domain.Prize;
 import com.raffleitup.domain.Winner;
 
@@ -276,6 +277,29 @@ public class ContestantBean implements Serializable
    public long getCount()
    {
       return this.count;
+   }
+   
+   public List<SelectItem> getWinnerListItems() {
+	   List<SelectItem> a = new ArrayList<SelectItem>();
+	   
+	   
+	   CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+	   CriteriaQuery<Contestant> cq = cb.createQuery(Contestant.class);
+ 	   Root<Contestant> prizert = cq.from(Contestant.class);
+	  
+	   cq.where(cb.equal(  prizert.get(Contestant_.wonPrize), true) );
+	   
+	   TypedQuery<Contestant> q = entityManager.createQuery(cq);
+	   List<Contestant> b = q.getResultList();
+	   
+	   for (Iterator<Contestant> iterator = b.iterator(); iterator.hasNext();) {
+		   Contestant contestant =  iterator.next();
+		   a.add(new SelectItem(contestant, contestant.getFirstName() + " " + contestant.getLastName()));
+		
+	   }
+	   
+	   return a;
+	   
    }
 
    /*

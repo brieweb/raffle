@@ -32,8 +32,8 @@
 						<h:outputLabel for="winnerBeanExampleContestant" value="Contestant:"/>
 						<h:panelGroup>
 							<h:selectOneMenu converter="#{contestantBean.converter}" id="winnerBeanExampleContestant" value="#{winnerBean.example.contestant}">
-								<f:selectItem/>
-								<f:selectItems value="#{contestantBean.all}"/>
+								
+								<f:selectItems value="#{contestantBean.winnerListItems}"/>
 							</h:selectOneMenu>
 							<h:message for="winnerBeanExampleContestant" styleClass="error"/>
 						</h:panelGroup>
@@ -53,7 +53,9 @@
 					</f:facet>
 					<h:link outcome="/admin/winner/view">
 						<f:param name="id" value="#{_item.id}"/>
-						<h:outputText id="itemContestant" value="#{_item.contestant}"/>
+						<h:outputText id="itemContestant" value="#{_item.contestant.firstName}"/> 
+						<h:outputText value=" " />
+						<h:outputText id="itemContestantLastName" value="#{_item.contestant.lastName}"/>
 					</h:link>
 				</h:column>
 				

@@ -1,0 +1,9 @@
+Thu Jan 31 00:17:16 PST 2013
+Modified the select list for the Winner Search so that it shows just the Winner's first
+and last name.
+
+Modified the web.xml so that the error page can be referenced. I did this by adding
+the faces/error.xhtml
+
+Added this Changelog
+-brian

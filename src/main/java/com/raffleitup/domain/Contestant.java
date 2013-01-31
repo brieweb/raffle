@@ -35,12 +35,14 @@ public class Contestant implements Serializable
 
    @Column
    private String lastName;
-   
+
    @Column
-   private boolean wonPrize=false;
+   private boolean wonPrize = false;
 
    private @OneToMany(mappedBy = "contestant", cascade = CascadeType.ALL)
    Set<Winner> winnings = new HashSet<Winner>();
+
+
 
    public Long getId()
    {
@@ -114,16 +116,6 @@ public class Contestant implements Serializable
       this.lastName = lastName;
    }
 
-   public String toString()
-   {
-      String result = "";
-      if (firstName != null && !firstName.trim().isEmpty())
-         result += firstName;
-      if (lastName != null && !lastName.trim().isEmpty())
-         result += " " + lastName;
-      return result;
-   }
-
    public Set<Winner> getWinnings()
    {
       return this.winnings;
@@ -134,15 +126,28 @@ public class Contestant implements Serializable
       this.winnings = winnings;
    }
 
-public boolean isWonPrize() {
-	return wonPrize;
-}
+   public boolean isWonPrize()
+   {
+      return wonPrize;
+   }
 
-public void setWonPrize(boolean wonPrize) {
-	this.wonPrize = wonPrize;
-}
+   public void setWonPrize(boolean wonPrize)
+   {
+      this.wonPrize = wonPrize;
+   }
 
 
 
+   public String toString()
+   {
+      String result = "";
+      if (firstName != null && !firstName.trim().isEmpty())
+         result += firstName;
+      if (lastName != null && !lastName.trim().isEmpty())
+         result += " " + lastName;
+      result += " " + wonPrize;
+
+      return result;
+   }
 
 }

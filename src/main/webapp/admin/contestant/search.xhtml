@@ -68,6 +68,15 @@
 						<h:outputText id="itemLastName" value="#{_item.lastName}"/>
 					</h:link>
 				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Winner?"/>
+					</f:facet>
+					<h:link outcome="/admin/contestant/view">
+						<f:param name="id" value="#{_item.id}"/>
+						<h:outputText id="itemWon" value="#{_item.wonPrize}"/>
+					</h:link>
+				</h:column>
 			</h:dataTable>
 			<ui:include src="/resources/scaffold/paginator.xhtml">
 				<ui:param name="paginatorBean" value="#{contestantBean}"/>

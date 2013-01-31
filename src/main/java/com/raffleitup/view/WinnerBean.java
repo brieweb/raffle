@@ -4,6 +4,7 @@ import java.beans.Expression;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Collections;
 
@@ -16,6 +17,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
+import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
@@ -199,6 +201,8 @@ public class WinnerBean implements Serializable
    {
       this.page = 0;
    }
+   
+   
 
    public void paginate()
    {
@@ -315,4 +319,6 @@ public class WinnerBean implements Serializable
       this.add = new Winner();
       return added;
    }
+   
+
 }
